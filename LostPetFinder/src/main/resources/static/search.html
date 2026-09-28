@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search Reports | LostPetFinder</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .page-header {
+            padding: 75px 0 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            margin-top: 12px;
+            font-family: Manrope, sans-serif;
+            font-size: clamp(38px, 5vw, 58px);
+        }
+
+        .page-header h1 span {
+            color: var(--orange);
+        }
+
+        .page-header p {
+            max-width: 600px;
+            margin: 15px auto 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .search-box {
+            max-width: 850px;
+            margin: 20px auto 35px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: rgba(18,27,43,.82);
+            box-shadow: 0 25px 60px rgba(0,0,0,.25);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 12px;
+            align-items: end;
+        }
+
+        .search-form .input-group {
+            flex: 1;
+        }
+
+        .results-panel {
+            margin-bottom: 70px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: rgba(18,27,43,.72);
+            overflow: hidden;
+        }
+
+        .results-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .results-title h2 {
+            font-family: Manrope, sans-serif;
+            font-size: 21px;
+        }
+
+        .result-count {
+            color: var(--orange);
+            font-size: 11px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        .search-empty {
+            padding: 55px 20px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .search-empty .big-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 650px) {
+            .search-form {
+                display: block;
+            }
+
+            .search-form button {
+                width: 100%;
+                margin-top: 12px;
+            }
+
+            .page-header {
+                padding-top: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <a href="/index.html" class="logo">
+
+        <span class="logo-icon">🐾</span>
+
+        <span class="logo-text">
+            <strong>LostPetFinder</strong>
+            <small>Pet Recovery Network</small>
+        </span>
+
+    </a>
+
+
+    <nav class="navigation">
+
+        <a href="/index.html" class="nav-link">
+            Home
+        </a>
+
+        <a href="/search.html" class="nav-link active">
+            Search
+        </a>
+
+        <a href="/report.html" class="nav-link">
+            Report
+        </a>
+
+        <a href="/register.html" class="nav-link register-link">
+            Register
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- PAGE HEADER -->
+
+<main>
+
+    <section class="page-header">
+
+        <span class="section-label">
+            FIND A PET
+        </span>
+
+        <h1>
+            Search <span>local reports.</span>
+        </h1>
+
+        <p>
+            Search lost and found animal reports by locality
+            and help connect pets with their owners.
+        </p>
+
+    </section>
+
+
+    <!-- SEARCH BOX -->
+
+    <section class="search-box">
+
+        <form id="searchForm" class="search-form">
+
+            <div class="input-group">
+
+                <label for="locality">
+                    Enter locality
+                </label>
+
+                <input
+                        type="text"
+                        id="locality"
+                        placeholder="Example: Coimbatore"
+                        required
+                >
+
+            </div>
+
+            <button type="submit" class="btn-primary">
+                🔎 Search Reports
+            </button>
+
+        </form>
+
+        <div id="message" class="message"></div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+
+    <section class="results-panel">
+
+        <div class="results-title">
+
+            <h2>
+                Search Results
+            </h2>
+
+            <span id="resultCount" class="result-count">
+                No search yet
+            </span>
+
+        </div>
+
+
+        <div id="resultsContainer">
+
+            <div class="search-empty">
+
+                <div class="big-icon">
+                    🐾
+                </div>
+
+                <strong>
+                    Search for a locality
+                </strong>
+
+                <p>
+                    Enter a location above to see
+                    available pet reports.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+        <a href="/index.html" class="logo">
+
+            <span class="logo-icon">🐾</span>
+
+            <span class="logo-text">
+                <strong>LostPetFinder</strong>
+                <small>Pet Recovery Network</small>
+            </span>
+
+        </a>
+
+
+        <div class="footer-links">
+
+            <a href="/index.html">Home</a>
+            <a href="/search.html">Search</a>
+            <a href="/report.html">Report</a>
+            <a href="/register.html">Register</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 LostPetFinder
+        </span>
+
+        <span>
+            Spring Boot • JPA • MySQL
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    async function searchReports(event) {
+
+        event.preventDefault();
+
+        const locality =
+            document.getElementById("locality")
+                .value.trim();
+
+        const message =
+            document.getElementById("message");
+
+        const container =
+            document.getElementById("resultsContainer");
+
+        const count =
+            document.getElementById("resultCount");
+
+
+        message.textContent = "";
+
+        if (!locality) {
+            return;
+        }
+
+
+        container.innerHTML = `
+            <div class="search-empty">
+                <div class="big-icon">⏳</div>
+                Searching reports...
+            </div>
+        `;
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/reports/search?locality=" +
+                    encodeURIComponent(locality)
+                );
+
+
+            if (!response.ok) {
+                throw new Error("Search failed");
+            }
+
+
+            const reports =
+                await response.json();
+
+
+            count.textContent =
+                reports.length +
+                (reports.length === 1
+                    ? " report"
+                    : " reports");
+
+
+            if (!reports.length) {
+
+                container.innerHTML = `
+                    <div class="search-empty">
+
+                        <div class="big-icon">
+                            🔍
+                        </div>
+
+                        <strong>
+                            No reports found
+                        </strong>
+
+                        <p>
+                            No pet reports were found for
+                            "${locality}".
+                        </p>
+
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML = `
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Type</th>
+                                <th>Species</th>
+                                <th>Breed</th>
+                                <th>Colour</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            ${reports.map(report => `
+
+                                <tr>
+
+                                    <td>
+                                        <span class="badge ${
+                                            String(report.type)
+                                                .toLowerCase()
+                                        }">
+                                            ${report.type || "REPORT"}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        ${report.species || "—"}
+                                    </td>
+
+                                    <td>
+                                        ${report.breed || "—"}
+                                    </td>
+
+                                    <td>
+                                        ${report.color || "—"}
+                                    </td>
+
+                                    <td>
+                                        ${report.location || "—"}
+                                    </td>
+
+                                    <td>
+                                        <span class="badge ${
+                                            String(report.status)
+                                                .toLowerCase()
+                                        }">
+                                            ${report.status || "—"}
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            `).join("")}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            `;
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            count.textContent = "Error";
+
+            message.textContent =
+                "Unable to search reports. Make sure Spring Boot is running.";
+
+            container.innerHTML = `
+                <div class="search-empty">
+
+                    <div class="big-icon">
+                        ⚠️
+                    </div>
+
+                    Search could not be completed.
+
+                </div>
+            `;
+        }
+    }
+
+
+    document
+        .getElementById("searchForm")
+        .addEventListener(
+            "submit",
+            searchReports
+        );
+
+</script>
+
+</body>
+</html>

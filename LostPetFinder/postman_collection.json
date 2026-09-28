@@ -1,0 +1,13 @@
+{
+  "info": {"name":"LostPetFinder API","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable":[{"key":"baseUrl","value":"http://localhost:8080"},{"key":"userId","value":"1"},{"key":"lostPetId","value":"1"}],
+  "item":[
+    {"name":"Create User","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"name\": \"Mohan\",\n  \"email\": \"mohan@example.com\",\n  \"phone\": \"9876543210\"\n}"},"url":{"raw":"{{baseUrl}}/api/users","host":["{{baseUrl}}"],"path":["api","users"]}}},
+    {"name":"Create Lost Pet","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"species\": \"Dog\",\n  \"breed\": \"Labrador\",\n  \"color\": \"Golden\",\n  \"lastSeenLocation\": \"Coimbatore\",\n  \"userId\": {{userId}}\n}"},"url":{"raw":"{{baseUrl}}/api/lost-pets","host":["{{baseUrl}}"],"path":["api","lost-pets"]}}},
+    {"name":"Create Found Animal","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"species\": \"Dog\",\n  \"breed\": \"Labrador\",\n  \"color\": \"Golden\",\n  \"foundLocation\": \"Coimbatore\",\n  \"description\": \"Blue collar\",\n  \"userId\": {{userId}}\n}"},"url":{"raw":"{{baseUrl}}/api/found-animals","host":["{{baseUrl}}"],"path":["api","found-animals"]}}},
+    {"name":"Find Matches","request":{"method":"GET","url":{"raw":"{{baseUrl}}/api/matches/lost/{{lostPetId}}","host":["{{baseUrl}}"],"path":["api","matches","lost","{{lostPetId}}"]}}},
+    {"name":"Search Locality","request":{"method":"GET","url":{"raw":"{{baseUrl}}/api/reports/search?locality=Coimbatore","host":["{{baseUrl}}"],"path":["api","reports","search"],"query":[{"key":"locality","value":"Coimbatore"}]}}},
+    {"name":"Dashboard Summary","request":{"method":"GET","url":{"raw":"{{baseUrl}}/api/dashboard/summary","host":["{{baseUrl}}"],"path":["api","dashboard","summary"]}}},
+    {"name":"Resolve Lost Pet","request":{"method":"PATCH","url":{"raw":"{{baseUrl}}/api/lost-pets/{{lostPetId}}/resolve","host":["{{baseUrl}}"],"path":["api","lost-pets","{{lostPetId}}","resolve"]}}}
+  ]
+}
