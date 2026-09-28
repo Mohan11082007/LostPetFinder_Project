@@ -4,107 +4,553 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Search Reports | LostPetFinder</title>
-
-    <link rel="stylesheet" href="/style.css">
+    <title>Search Reports - LostPetFinder</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080d16;
+            color: #f4f6fa;
+            min-height: 100vh;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            background: #101827;
+            border-bottom: 1px solid #263449;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            height: 76px;
+            margin: auto;
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+            background: #ffb52e;
+
+            font-size: 22px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand strong {
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        .brand span {
+            color: #8995a8;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: #aeb8c8;
+            text-decoration: none;
+
+            padding: 10px 15px;
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: #1b2739;
+            color: #ffffff;
+        }
+
+        .nav-links a.active {
+            background: #1c293d;
+            color: #ffb52e;
+        }
+
+        .nav-register {
+            background: #ffb52e !important;
+            color: #111827 !important;
+            font-weight: bold;
+        }
+
+        .nav-register:hover {
+            background: #ffc45c !important;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 25px 70px;
+        }
+
         .page-header {
-            padding: 75px 0 40px;
             text-align: center;
+            margin-bottom: 45px;
         }
 
         .page-header h1 {
-            margin-top: 12px;
-            font-family: Manrope, sans-serif;
-            font-size: clamp(38px, 5vw, 58px);
-        }
-
-        .page-header h1 span {
-            color: var(--orange);
+            color: #ffffff;
+            font-size: 34px;
+            margin-bottom: 12px;
         }
 
         .page-header p {
-            max-width: 600px;
-            margin: 15px auto 0;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.7;
+            color: #8e9bad;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        .search-box {
-            max-width: 850px;
-            margin: 20px auto 35px;
-            padding: 25px;
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            background: rgba(18,27,43,.82);
-            box-shadow: 0 25px 60px rgba(0,0,0,.25);
+        /* ================= SEARCH CARD ================= */
+
+        .search-card {
+            max-width: 950px;
+            margin: auto;
+
+            background: #111b2b;
+
+            border: 1px solid #29374c;
+            border-radius: 20px;
+
+            padding: 32px;
+
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
         }
 
-        .search-form {
+        .search-label {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .search-label span {
+            color: #ffb52e;
+        }
+
+        .search-row {
             display: flex;
-            gap: 12px;
-            align-items: end;
+            gap: 18px;
         }
 
-        .search-form .input-group {
+        .search-row input {
             flex: 1;
+
+            height: 54px;
+
+            padding: 0 18px;
+
+            background: #151f30 !important;
+            color: #ffffff !important;
+
+            border: 1px solid #304057 !important;
+            border-radius: 12px;
+
+            outline: none;
+
+            font-size: 14px;
         }
 
-        .results-panel {
-            margin-bottom: 70px;
-            padding: 25px;
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            background: rgba(18,27,43,.72);
-            overflow: hidden;
+        .search-row input::placeholder {
+            color: #718097;
         }
 
-        .results-title {
+        .search-row input:focus {
+            background: #182437 !important;
+            border-color: #ffb52e !important;
+
+            box-shadow:
+                0 0 0 3px rgba(255, 181, 46, 0.10);
+        }
+
+        .search-btn {
+            height: 54px;
+
+            padding: 0 30px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #ffb52e;
+            color: #111827;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .search-btn:hover {
+            background: #ffc45c;
+            transform: translateY(-1px);
+        }
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 13px 15px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+        }
+
+        .message.success {
+            display: block;
+
+            background: #123322;
+            border: 1px solid #286b43;
+            color: #7ee2a7;
+        }
+
+        .message.error {
+            display: block;
+
+            background: #35171c;
+            border: 1px solid #71313a;
+            color: #ff9da7;
+        }
+
+        .message.info {
+            display: block;
+
+            background: #17273b;
+            border: 1px solid #2b4b70;
+            color: #9fcaff;
+        }
+
+        /* ================= RESULTS ================= */
+
+        .results-section {
+            margin-top: 35px;
+        }
+
+        .results-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+
+            margin-bottom: 16px;
         }
 
-        .results-title h2 {
-            font-family: Manrope, sans-serif;
+        .results-header h2 {
+            color: #ffffff;
             font-size: 21px;
         }
 
         .result-count {
-            color: var(--orange);
-            font-size: 11px;
+            background: #201f1a;
+
+            border: 1px solid #5a4920;
+
+            color: #ffb52e;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: bold;
         }
 
-        .table-wrap {
+        /* ================= TABLE ================= */
+
+        .table-card {
+            background: #111b2b;
+
+            border: 1px solid #29374c;
+            border-radius: 18px;
+
             overflow-x: auto;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.22);
         }
 
-        .search-empty {
-            padding: 55px 20px;
+        table {
+            width: 100%;
+            min-width: 1050px;
+
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #18263b;
+        }
+
+        th {
+            padding: 17px 18px;
+
+            text-align: left;
+
+            color: #ffb52e;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            border-bottom: 1px solid #304057;
+        }
+
+        td {
+            padding: 18px;
+
+            color: #dce3ed;
+
+            font-size: 13px;
+
+            border-bottom: 1px solid #202d40;
+        }
+
+        tbody tr {
+            transition: 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #151f30;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ================= TYPE ================= */
+
+        .type {
+            display: inline-block;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+        }
+
+        .type.lost {
+            background: #351d26;
+            border: 1px solid #743444;
+            color: #ff9da7;
+        }
+
+        .type.found {
+            background: #12352f;
+            border: 1px solid #176452;
+            color: #73e0bc;
+        }
+
+        /* ================= STATUS ================= */
+
+        .status {
+            display: inline-block;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+        }
+
+        .status.active {
+            background: #292719;
+            border: 1px solid #5d4c20;
+            color: #ffc34d;
+        }
+
+        .status.resolved {
+            background: #123322;
+            border: 1px solid #286b43;
+            color: #7ee2a7;
+        }
+
+        /* ================= RESOLVE BUTTON ================= */
+
+        .resolve-btn {
+            padding: 9px 14px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: #ffb52e;
+            color: #111827;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+
+            transition: 0.2s;
+        }
+
+        .resolve-btn:hover {
+            background: #ffc45c;
+
+            transform: translateY(-1px);
+        }
+
+        .resolve-btn:disabled {
+            background: #394456;
+            color: #8b96a8;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+        .no-action {
+            color: #66748a;
+            font-size: 13px;
+        }
+
+        /* ================= EMPTY ================= */
+
+        .empty-box {
+            padding: 60px 20px;
+
             text-align: center;
-            color: var(--muted);
+
+            color: #7f8b9d;
         }
 
-        .search-empty .big-icon {
-            font-size: 45px;
-            margin-bottom: 12px;
+        .empty-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
         }
 
-        @media (max-width: 650px) {
-            .search-form {
-                display: block;
+        .empty-box h3 {
+            color: #cbd3df;
+
+            font-size: 17px;
+
+            margin-bottom: 8px;
+        }
+
+        .empty-box p {
+            font-size: 13px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0d1523;
+
+            border-top: 1px solid #263449;
+
+            padding: 25px;
+
+            text-align: center;
+
+            color: #748197;
+
+            font-size: 12px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 750px) {
+
+            .nav-container {
+                height: auto;
+
+                padding: 15px;
+
+                flex-direction: column;
+
+                gap: 15px;
             }
 
-            .search-form button {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page {
+                padding: 35px 15px 50px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .search-card {
+                padding: 22px;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+
+            .search-btn {
                 width: 100%;
-                margin-top: 12px;
             }
 
-            .page-header {
-                padding-top: 50px;
+            .results-header {
+                align-items: flex-start;
+                gap: 10px;
+                flex-direction: column;
             }
         }
     </style>
@@ -112,132 +558,140 @@
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
-<header class="navbar">
+<nav class="navbar">
 
-    <a href="/index.html" class="logo">
+    <div class="nav-container">
 
-        <span class="logo-icon">🐾</span>
+        <a href="/index.html" class="brand">
 
-        <span class="logo-text">
-            <strong>LostPetFinder</strong>
-            <small>Pet Recovery Network</small>
-        </span>
+            <div class="brand-icon">
+                🐾
+            </div>
 
-    </a>
+            <div class="brand-text">
+                <strong>LostPetFinder</strong>
+                <span>Pet Recovery Network</span>
+            </div>
 
-
-    <nav class="navigation">
-
-        <a href="/index.html" class="nav-link">
-            Home
         </a>
 
-        <a href="/search.html" class="nav-link active">
-            Search
-        </a>
+        <div class="nav-links">
 
-        <a href="/report.html" class="nav-link">
-            Report
-        </a>
+            <a href="/index.html">
+                Home
+            </a>
 
-        <a href="/register.html" class="nav-link register-link">
-            Register
-        </a>
+            <a href="/search.html" class="active">
+                Search
+            </a>
 
-    </nav>
+            <a href="/report.html">
+                Report
+            </a>
 
-</header>
+            <a href="/register.html" class="nav-register">
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
 
 
-<!-- PAGE HEADER -->
+<!-- ================= MAIN ================= -->
 
-<main>
+<main class="page">
 
-    <section class="page-header">
-
-        <span class="section-label">
-            FIND A PET
-        </span>
+    <div class="page-header">
 
         <h1>
-            Search <span>local reports.</span>
+            Search Local Reports
         </h1>
 
         <p>
-            Search lost and found animal reports by locality
-            and help connect pets with their owners.
+            Enter a location to discover lost pets and found animals
+            reported by people in your community.
         </p>
 
-    </section>
+    </div>
 
 
-    <!-- SEARCH BOX -->
+    <!-- ================= SEARCH ================= -->
 
-    <section class="search-box">
+    <section class="search-card">
 
-        <form id="searchForm" class="search-form">
+        <label class="search-label">
+            Enter locality <span>*</span>
+        </label>
 
-            <div class="input-group">
+        <div class="search-row">
 
-                <label for="locality">
-                    Enter locality
-                </label>
+            <input
+                    type="text"
+                    id="locality"
+                    placeholder="Enter locality e.g. Coimbatore"
+                    autocomplete="off"
+            >
 
-                <input
-                        type="text"
-                        id="locality"
-                        placeholder="Example: Coimbatore"
-                        required
-                >
-
-            </div>
-
-            <button type="submit" class="btn-primary">
-                🔎 Search Reports
+            <button
+                    type="button"
+                    class="search-btn"
+                    onclick="searchReports()"
+            >
+                🔎 &nbsp; Search Reports
             </button>
 
-        </form>
+        </div>
 
         <div id="message" class="message"></div>
 
     </section>
 
 
-    <!-- RESULTS -->
+    <!-- ================= RESULTS ================= -->
 
-    <section class="results-panel">
+    <section class="results-section">
 
-        <div class="results-title">
+        <div class="results-header">
 
             <h2>
                 Search Results
             </h2>
 
-            <span id="resultCount" class="result-count">
-                No search yet
+            <span
+                    id="resultCount"
+                    class="result-count"
+            >
+                0 reports
             </span>
 
         </div>
 
 
-        <div id="resultsContainer">
+        <div class="table-card">
 
-            <div class="search-empty">
+            <div id="resultsContainer">
 
-                <div class="big-icon">
-                    🐾
+                <div class="empty-box">
+
+                    <div class="empty-icon">
+                        🔎
+                    </div>
+
+                    <h3>
+                        Search for a local report
+                    </h3>
+
+                    <p>
+                        Enter a locality above to view lost and found
+                        animal reports.
+                    </p>
+
                 </div>
-
-                <strong>
-                    Search for a locality
-                </strong>
-
-                <p>
-                    Enter a location above to see
-                    available pet reports.
-                </p>
 
             </div>
 
@@ -248,97 +702,111 @@
 </main>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
-<footer class="footer">
+<footer>
 
-    <div class="footer-main">
-
-        <a href="/index.html" class="logo">
-
-            <span class="logo-icon">🐾</span>
-
-            <span class="logo-text">
-                <strong>LostPetFinder</strong>
-                <small>Pet Recovery Network</small>
-            </span>
-
-        </a>
-
-
-        <div class="footer-links">
-
-            <a href="/index.html">Home</a>
-            <a href="/search.html">Search</a>
-            <a href="/report.html">Report</a>
-            <a href="/register.html">Register</a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © 2026 LostPetFinder
-        </span>
-
-        <span>
-            Spring Boot • JPA • MySQL
-        </span>
-
-    </div>
+    LostPetFinder © 2026 · Helping reunite pets with their families
 
 </footer>
 
 
 <script>
 
-    async function searchReports(event) {
+    /* =====================================================
+       SEARCH REPORTS
+       ===================================================== */
 
-        event.preventDefault();
+    async function searchReports() {
 
         const locality =
             document.getElementById("locality")
-                .value.trim();
+                .value
+                .trim();
 
         const message =
             document.getElementById("message");
 
-        const container =
+        const resultsContainer =
             document.getElementById("resultsContainer");
 
-        const count =
+        const resultCount =
             document.getElementById("resultCount");
 
 
+        /* Clear message */
+
+        message.className = "message";
         message.textContent = "";
 
+
+        /* Validate */
+
         if (!locality) {
+
+            showMessage(
+                "Please enter a locality.",
+                "error"
+            );
+
+            document
+                .getElementById("locality")
+                .focus();
+
             return;
         }
 
 
-        container.innerHTML = `
-            <div class="search-empty">
-                <div class="big-icon">⏳</div>
-                Searching reports...
+        /* Loading */
+
+        showMessage(
+            "Searching reports...",
+            "info"
+        );
+
+        resultCount.textContent =
+            "Searching...";
+
+
+        resultsContainer.innerHTML = `
+
+            <div class="empty-box">
+
+                <div class="empty-icon">
+                    ⏳
+                </div>
+
+                <h3>
+                    Searching...
+                </h3>
+
+                <p>
+                    Please wait while we find matching reports.
+                </p>
+
             </div>
+
         `;
 
 
         try {
 
-            const response =
-                await fetch(
-                    "/api/reports/search?locality=" +
-                    encodeURIComponent(locality)
-                );
+            /*
+             * Keep this endpoint because your
+             * existing Search page is already
+             * working with this endpoint.
+             */
+
+            const response = await fetch(
+                `/api/reports/search?locality=${encodeURIComponent(locality)}`
+            );
 
 
             if (!response.ok) {
-                throw new Error("Search failed");
+
+                throw new Error(
+                    "Search request failed."
+                );
             }
 
 
@@ -346,138 +814,496 @@
                 await response.json();
 
 
-            count.textContent =
-                reports.length +
-                (reports.length === 1
-                    ? " report"
-                    : " reports");
+            /* Clear message */
+
+            message.className = "message";
+            message.textContent = "";
 
 
-            if (!reports.length) {
+            /* No results */
 
-                container.innerHTML = `
-                    <div class="search-empty">
+            if (
+                !reports ||
+                reports.length === 0
+            ) {
 
-                        <div class="big-icon">
-                            🔍
+                resultCount.textContent =
+                    "0 reports";
+
+                resultsContainer.innerHTML = `
+
+                    <div class="empty-box">
+
+                        <div class="empty-icon">
+                            🐾
                         </div>
 
-                        <strong>
-                            No reports found
-                        </strong>
+                        <h3>
+                            No Reports Found
+                        </h3>
 
                         <p>
-                            No pet reports were found for
-                            "${locality}".
+                            No reports were found for
+                            <strong>
+                                ${escapeHtml(locality)}
+                            </strong>.
                         </p>
 
                     </div>
+
                 `;
 
                 return;
             }
 
 
-            container.innerHTML = `
+            /* Results */
 
-                <div class="table-wrap">
+            resultCount.textContent =
+                `${reports.length} ${
+                    reports.length === 1
+                        ? "report"
+                        : "reports"
+                }`;
 
-                    <table>
 
-                        <thead>
-
-                            <tr>
-                                <th>Type</th>
-                                <th>Species</th>
-                                <th>Breed</th>
-                                <th>Colour</th>
-                                <th>Location</th>
-                                <th>Status</th>
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-
-                            ${reports.map(report => `
-
-                                <tr>
-
-                                    <td>
-                                        <span class="badge ${
-                                            String(report.type)
-                                                .toLowerCase()
-                                        }">
-                                            ${report.type || "REPORT"}
-                                        </span>
-                                    </td>
-
-                                    <td>
-                                        ${report.species || "—"}
-                                    </td>
-
-                                    <td>
-                                        ${report.breed || "—"}
-                                    </td>
-
-                                    <td>
-                                        ${report.color || "—"}
-                                    </td>
-
-                                    <td>
-                                        ${report.location || "—"}
-                                    </td>
-
-                                    <td>
-                                        <span class="badge ${
-                                            String(report.status)
-                                                .toLowerCase()
-                                        }">
-                                            ${report.status || "—"}
-                                        </span>
-                                    </td>
-
-                                </tr>
-
-                            `).join("")}
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-            `;
+            renderResults(reports);
 
 
         } catch (error) {
 
             console.error(error);
 
-            count.textContent = "Error";
+            resultCount.textContent =
+                "Search failed";
 
-            message.textContent =
-                "Unable to search reports. Make sure Spring Boot is running.";
 
-            container.innerHTML = `
-                <div class="search-empty">
+            resultsContainer.innerHTML = `
 
-                    <div class="big-icon">
+                <div class="empty-box">
+
+                    <div class="empty-icon">
                         ⚠️
                     </div>
 
-                    Search could not be completed.
+                    <h3>
+                        Unable to Search
+                    </h3>
+
+                    <p>
+                        Please make sure the Spring Boot
+                        server is running.
+                    </p>
 
                 </div>
+
             `;
+
+
+            showMessage(
+                "Unable to connect to the backend.",
+                "error"
+            );
         }
     }
 
 
+    /* =====================================================
+       DISPLAY RESULTS
+       ===================================================== */
+
+    function renderResults(reports) {
+
+        let html = `
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Type</th>
+
+                        <th>Species</th>
+
+                        <th>Breed</th>
+
+                        <th>Colour</th>
+
+                        <th>Location</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+        `;
+
+
+        reports.forEach(report => {
+
+            /* ================================
+               GET DATA
+               ================================= */
+
+            const type =
+                report.type ||
+                report.reportType ||
+                (
+                    report.lastSeenLocation
+                        ? "LOST"
+                        : "FOUND"
+                );
+
+
+            const species =
+                report.species || "-";
+
+
+            const breed =
+                report.breed || "-";
+
+
+            const colour =
+                report.color ||
+                report.colour ||
+                "-";
+
+
+            const location =
+                report.lastSeenLocation ||
+                report.foundLocation ||
+                report.location ||
+                "-";
+
+
+            const status =
+                report.status ||
+                "ACTIVE";
+
+
+            const id =
+                report.id;
+
+
+            const typeUpper =
+                String(type).toUpperCase();
+
+
+            const statusUpper =
+                String(status).toUpperCase();
+
+
+            const isLost =
+                typeUpper === "LOST";
+
+
+            const isResolved =
+                statusUpper === "RESOLVED";
+
+
+            /* ================================
+               TYPE BADGE
+               ================================= */
+
+            const typeClass =
+                isLost
+                    ? "lost"
+                    : "found";
+
+
+            /* ================================
+               ACTION
+               ================================= */
+
+            let actionHtml = "";
+
+
+            if (isLost) {
+
+                if (isResolved) {
+
+                    actionHtml = `
+
+                        <button
+                            class="resolve-btn"
+                            disabled
+                        >
+                            ✓ Resolved
+                        </button>
+
+                    `;
+
+                } else {
+
+                    actionHtml = `
+
+                        <button
+                            class="resolve-btn"
+                            onclick="resolveReport(${id}, this)"
+                        >
+                            🐾 Mark as Resolved
+                        </button>
+
+                    `;
+                }
+
+            } else {
+
+                actionHtml = `
+
+                    <span class="no-action">
+                        —
+                    </span>
+
+                `;
+            }
+
+
+            /* ================================
+               TABLE ROW
+               ================================= */
+
+            html += `
+
+                <tr>
+
+                    <td>
+
+                        <span class="type ${typeClass}">
+                            ${escapeHtml(typeUpper)}
+                        </span>
+
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${escapeHtml(species)}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(breed)}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(colour)}
+                    </td>
+
+                    <td>
+                        📍 ${escapeHtml(location)}
+                    </td>
+
+                    <td>
+
+                        <span class="status ${
+                            isResolved
+                                ? "resolved"
+                                : "active"
+                        }">
+
+                            ${escapeHtml(statusUpper)}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+                        ${actionHtml}
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+        html += `
+
+                </tbody>
+
+            </table>
+
+        `;
+
+
+        document
+            .getElementById("resultsContainer")
+            .innerHTML = html;
+    }
+
+
+    /* =====================================================
+       RESOLVE LOST PET
+       ===================================================== */
+
+    async function resolveReport(id, button) {
+
+        if (!id) {
+
+            showMessage(
+                "Invalid lost pet report ID.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /*
+         * Confirmation
+         */
+
+        const confirmed = confirm(
+            "Have you found your pet?\n\n" +
+            "Click OK to mark this lost-pet report as RESOLVED."
+        );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        /*
+         * Disable button
+         */
+
+        button.disabled = true;
+
+        button.textContent =
+            "Updating...";
+
+
+        try {
+
+            /*
+             * Existing backend endpoint
+             */
+
+            const response = await fetch(
+                `/api/lost-pets/${id}/resolve`,
+                {
+                    method: "PATCH"
+                }
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Unable to resolve report."
+                );
+            }
+
+
+            await response.json();
+
+
+            /*
+             * Success message
+             */
+
+            showMessage(
+                "Pet found successfully! The report has been marked as RESOLVED.",
+                "success"
+            );
+
+
+            /*
+             * Refresh search results
+             */
+
+            await searchReports();
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "🐾 Mark as Resolved";
+
+
+            showMessage(
+                "Unable to resolve the report. Please try again.",
+                "error"
+            );
+        }
+    }
+
+
+    /* =====================================================
+       MESSAGE
+       ===================================================== */
+
+    function showMessage(text, type) {
+
+        const message =
+            document.getElementById("message");
+
+
+        message.textContent = text;
+
+        message.className =
+            `message ${type}`;
+    }
+
+
+    /* =====================================================
+       HTML SECURITY
+       ===================================================== */
+
+    function escapeHtml(value) {
+
+        if (
+            value === null ||
+            value === undefined
+        ) {
+            return "";
+        }
+
+
+        return String(value)
+
+            .replace(/&/g, "&amp;")
+
+            .replace(/</g, "&lt;")
+
+            .replace(/>/g, "&gt;")
+
+            .replace(/"/g, "&quot;")
+
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* =====================================================
+       ENTER KEY
+       ===================================================== */
+
     document
-        .getElementById("searchForm")
+        .getElementById("locality")
         .addEventListener(
-            "submit",
-            searchReports
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchReports();
+
+                }
+
+            }
         );
 
 </script>

@@ -5,8 +5,7 @@
 
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Register | LostPetFinder</title>
 
@@ -14,62 +13,210 @@
 
   <style>
 
+    /* ================================
+       REGISTER NAVBAR
+    ================================= */
+
+    .register-navbar {
+        width: 100%;
+        height: 82px;
+
+        background: rgba(7, 11, 19, 0.97);
+
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+
+        display: flex;
+        align-items: center;
+    }
+
+    .register-nav-container {
+        width: 100%;
+        max-width: 1200px;
+
+        height: 82px;
+
+        margin: auto;
+        padding: 0 28px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .register-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        text-decoration: none;
+        color: white;
+    }
+
+    .register-brand-icon {
+        width: 44px;
+        height: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 14px;
+
+        background: linear-gradient(
+            135deg,
+            #ffd16a,
+            #ff9e32
+        );
+
+        font-size: 21px;
+    }
+
+    .register-brand-name {
+        display: block;
+
+        color: #f5f7fb;
+
+        font-size: 17px;
+        font-weight: 800;
+    }
+
+    .register-brand-sub {
+        display: block;
+
+        margin-top: 3px;
+
+        color: #78869b;
+
+        font-size: 9px;
+    }
+
+    .register-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 34px;
+    }
+
+    .register-nav-links a {
+        color: #9da9bb;
+
+        text-decoration: none;
+
+        font-size: 13px;
+        font-weight: 700;
+
+        padding: 30px 0 25px;
+
+        border-bottom: 2px solid transparent;
+    }
+
+    .register-nav-links a:hover {
+        color: white;
+    }
+
+    .register-nav-links a.active {
+        color: #ffb52e;
+
+        border-bottom-color: #ffb52e;
+    }
+
+    .register-button {
+        padding: 12px 22px !important;
+
+        color: #11151d !important;
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffd16a,
+                #ffb43d
+            );
+
+        border-radius: 12px;
+
+        border: none !important;
+    }
+
+
+    /* ================================
+       REGISTER MAIN
+    ================================= */
+
     .register-page {
-        min-height: calc(100vh - 78px);
+        min-height: calc(100vh - 82px);
+
+        max-width: 1300px;
+
+        margin: auto;
+
+        padding: 70px 6% 85px;
 
         display: grid;
 
-        grid-template-columns: 1fr 1fr;
-
-        align-items: center;
+        grid-template-columns: 1fr 540px;
 
         gap: 70px;
 
-        padding: 70px 0;
+        align-items: center;
     }
 
 
-    /* ================= LEFT ================= */
+    /* ================================
+       LEFT SIDE
+    ================================= */
 
     .register-intro {
-        position: relative;
+        max-width: 600px;
+    }
+
+    .register-label {
+        color: #ffb52e;
+
+        font-size: 10px;
+
+        font-weight: 800;
+
+        letter-spacing: 2px;
     }
 
     .register-intro h1 {
-        margin-top: 15px;
+        margin-top: 18px;
 
-        font-family: Manrope, sans-serif;
+        font-size: clamp(48px, 6vw, 72px);
 
-        font-size: clamp(42px, 5vw, 62px);
+        line-height: 1.02;
 
-        line-height: 1.05;
-
-        letter-spacing: -2px;
+        color: #f4f6fa;
     }
 
     .register-intro h1 span {
-        color: var(--orange);
+        color: #ffb52e;
     }
 
     .register-intro > p {
-        max-width: 500px;
+        margin-top: 25px;
 
-        margin-top: 20px;
+        max-width: 540px;
 
-        color: var(--muted);
+        color: #9ca9bd;
 
-        font-size: 13px;
+        font-size: 14px;
 
         line-height: 1.8;
     }
 
 
-    .register-benefits {
-        display: grid;
+    /* ================================
+       BENEFITS
+    ================================= */
 
-        gap: 13px;
+    .benefits {
+        margin-top: 38px;
 
-        margin-top: 35px;
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 18px;
     }
 
     .benefit {
@@ -77,216 +224,377 @@
 
         align-items: center;
 
-        gap: 13px;
+        gap: 14px;
     }
 
     .benefit-icon {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
 
-        display: grid;
+        display: flex;
 
-        place-items: center;
+        align-items: center;
+        justify-content: center;
 
-        flex-shrink: 0;
+        border-radius: 13px;
 
-        border-radius: 12px;
+        background:
+            rgba(255,181,46,.07);
 
-        background: rgba(255,184,74,.08);
+        border:
+            1px solid
+            rgba(255,181,46,.15);
 
-        border: 1px solid rgba(255,184,74,.12);
+        font-size: 18px;
     }
 
     .benefit strong {
         display: block;
 
-        font-size: 12px;
+        color: #f4f6fa;
+
+        font-size: 13px;
     }
 
-    .benefit span {
-        display: block;
+    .benefit p {
+        margin-top: 4px;
 
-        margin-top: 3px;
+        color: #718097;
 
-        color: var(--muted);
-
-        font-size: 9px;
+        font-size: 10px;
     }
 
 
-    /* ================= REGISTER CARD ================= */
+    /* ================================
+       REGISTER CARD
+    ================================= */
 
     .register-card {
-        padding: 35px;
+        padding: 38px;
 
-        border-radius: 25px;
-
-        border: 1px solid var(--border);
+        border-radius: 24px;
 
         background:
             linear-gradient(
                 145deg,
-                rgba(21,31,50,.96),
-                rgba(10,16,27,.96)
+                rgba(20,30,47,.98),
+                rgba(10,16,27,.98)
             );
 
+        border:
+            1px solid
+            rgba(255,255,255,.09);
+
         box-shadow:
-            0 30px 80px rgba(0,0,0,.3);
+            0 30px 80px
+            rgba(0,0,0,.30);
     }
 
+    .register-icon {
+        width: 54px;
+        height: 54px;
 
-    .register-card-header {
-        margin-bottom: 25px;
-    }
+        display: flex;
 
-    .register-card-header .icon {
-        width: 52px;
-        height: 52px;
-
-        display: grid;
-
-        place-items: center;
+        align-items: center;
+        justify-content: center;
 
         border-radius: 15px;
 
-        background: rgba(255,184,74,.10);
+        background:
+            rgba(255,181,46,.09);
 
         font-size: 25px;
+
+        margin-bottom: 20px;
     }
 
-    .register-card-header h2 {
-        margin-top: 18px;
+    .register-card h2 {
+        color: #f4f6fa;
 
-        font-family: Manrope, sans-serif;
-
-        font-size: 25px;
+        font-size: 28px;
     }
 
-    .register-card-header p {
-        margin-top: 6px;
+    .register-card > p {
+        margin-top: 8px;
 
-        color: var(--muted);
+        color: #8190a6;
+
+        font-size: 11px;
+    }
+
+
+    /* ================================
+       FORM
+    ================================= */
+
+    .register-form {
+        margin-top: 30px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .register-group {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .register-group label {
+        color: #dce2eb;
 
         font-size: 11px;
 
-        line-height: 1.6;
+        font-weight: 800;
+
+        letter-spacing: .5px;
+
+        text-transform: uppercase;
     }
 
-
-    /* ================= FORM ================= */
-
-    .register-form {
-        display: grid;
-
-        gap: 17px;
-    }
-
-    .input-group label {
-        display: block;
-
-        margin-bottom: 7px;
-
-        color: #c6cfdd;
-
-        font-size: 10px;
-
-        font-weight: 700;
-    }
-
-    .input-group input {
+    .register-group input {
         width: 100%;
 
-        padding: 14px;
+        height: 50px;
 
-        border: 1px solid var(--border);
+        padding: 0 15px;
 
-        border-radius: 11px;
+        background: #151f30 !important;
 
-        outline: none;
+        color: #f4f6fa !important;
 
-        background: rgba(255,255,255,.035);
+        border:
+            1px solid #2d3a4e !important;
 
-        color: white;
+        border-radius: 12px !important;
 
-        font-family: inherit;
+        outline: none !important;
 
-        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
 
-        transition: .2s;
+        font-size: 13px;
+
+        box-shadow: none !important;
     }
 
-    .input-group input::placeholder {
-        color: #647187;
+    .register-group input::placeholder {
+        color: #718097 !important;
+
+        opacity: 1;
     }
 
-    .input-group input:focus {
-        border-color: var(--orange);
+    .register-group input:focus {
+        background: #182437 !important;
+
+        color: white !important;
+
+        border-color: #ffb52e !important;
 
         box-shadow:
-            0 0 0 3px rgba(255,184,74,.07);
+            0 0 0 3px
+            rgba(255,181,46,.12) !important;
     }
 
-    .register-form .btn-primary {
+
+    /* ================================
+       SUBMIT BUTTON
+    ================================= */
+
+    .register-submit {
         width: 100%;
+
+        height: 50px;
 
         margin-top: 5px;
 
-        border: 0;
+        border: none;
+
+        border-radius: 12px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffd16a,
+                #ffb43d
+            );
+
+        color: #11151d;
+
+        font-size: 13px;
+
+        font-weight: 800;
 
         cursor: pointer;
 
-        font-family: inherit;
+        transition: .2s ease;
+    }
+
+    .register-submit:hover {
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 12px 30px
+            rgba(255,181,46,.20);
     }
 
     #registerMessage {
-        min-height: 22px;
+        min-height: 20px;
 
-        font-size: 11px;
+        font-size: 12px;
 
-        line-height: 1.6;
+        margin-top: 3px;
     }
 
 
-    /* ================= LOGIN NOTE ================= */
+    /* ================================
+       FOOTER
+    ================================= */
 
-    .register-note {
-        margin-top: 18px;
+    .register-footer {
+        min-height: 105px;
 
-        padding-top: 17px;
+        padding: 28px 6%;
 
-        border-top: 1px solid var(--border);
+        display: flex;
 
-        color: #68758a;
+        align-items: center;
+
+        justify-content: space-between;
+
+        background: #060a12;
+
+        border-top:
+            1px solid
+            rgba(255,255,255,.08);
+    }
+
+    .register-footer-brand {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .register-footer-icon {
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 13px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffd16a,
+                #ff9e32
+            );
+    }
+
+    .register-footer strong {
+        display: block;
+
+        color: #f4f6fa;
+
+        font-size: 16px;
+    }
+
+    .register-footer small {
+        display: block;
+
+        margin-top: 3px;
+
+        color: #718097;
 
         font-size: 9px;
+    }
 
-        line-height: 1.6;
+    .register-footer-links {
+        display: flex;
 
-        text-align: center;
+        gap: 28px;
+    }
+
+    .register-footer-links a {
+        color: #7f8da3;
+
+        text-decoration: none;
+
+        font-size: 11px;
+    }
+
+    .register-footer-links a:hover {
+        color: #ffb52e;
     }
 
 
-    @media (max-width: 800px) {
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 900px) {
 
         .register-page {
             grid-template-columns: 1fr;
 
-            gap: 40px;
+            gap: 45px;
 
-            padding: 50px 0 70px;
-        }
-
-        .register-intro h1 {
-            font-size: 43px;
+            padding:
+                55px 25px;
         }
 
     }
 
+    @media (max-width: 650px) {
 
-    @media (max-width: 500px) {
+        .register-nav-container {
+            padding: 0 15px;
+        }
+
+        .register-nav-links {
+            gap: 13px;
+        }
+
+        .register-nav-links a {
+            font-size: 10px;
+
+            padding:
+                28px 0 23px;
+        }
+
+        .register-button {
+            padding:
+                10px 13px !important;
+        }
+
+        .register-brand-sub {
+            display: none;
+        }
 
         .register-card {
             padding: 25px;
+        }
+
+        .register-intro h1 {
+            font-size: 45px;
+        }
+
+        .register-footer {
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 20px;
         }
 
     }
@@ -299,414 +607,438 @@
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
-<header class="navbar">
+<header class="register-navbar">
 
-  <a href="/index.html" class="logo">
-
-    <span class="logo-icon">🐾</span>
-
-    <span class="logo-text">
-            <strong>LostPetFinder</strong>
-            <small>Pet Recovery Network</small>
-        </span>
-
-  </a>
+  <div class="register-nav-container">
 
 
-  <nav class="navigation">
+    <a href="/index.html"
+       class="register-brand">
 
-    <a href="/index.html" class="nav-link">
-      Home
+      <div class="register-brand-icon">
+        🐾
+      </div>
+
+      <div>
+
+        <strong class="register-brand-name">
+          LostPetFinder
+        </strong>
+
+        <span class="register-brand-sub">
+                    Pet Recovery Network
+                </span>
+
+      </div>
+
     </a>
 
-    <a href="/search.html" class="nav-link">
-      Search
-    </a>
 
-    <a href="/report.html" class="nav-link">
-      Report
-    </a>
+    <nav class="register-nav-links">
 
-    <a href="/register.html"
-       class="nav-link register-link active">
-      Register
-    </a>
+      <a href="/index.html">
+        Home
+      </a>
 
-  </nav>
+      <a href="/search.html">
+        Search
+      </a>
+
+      <a href="/report.html">
+        Report
+      </a>
+
+      <a href="/register.html"
+         class="register-button active">
+        Register
+      </a>
+
+    </nav>
+
+  </div>
 
 </header>
 
 
-<!-- ================= MAIN ================= -->
+<!-- =====================================================
+     MAIN REGISTER PAGE
+===================================================== -->
 
-<main>
-
-  <section class="register-page">
-
-
-    <!-- ================= INTRO ================= -->
-
-    <div class="register-intro">
-
-            <span class="section-label">
-                JOIN THE COMMUNITY
-            </span>
-
-      <h1>
-        Be part of the
-        <span>recovery.</span>
-      </h1>
-
-      <p>
-        Create your LostPetFinder account and help
-        connect lost pets with the people looking for them.
-      </p>
+<main class="register-page">
 
 
-      <div class="register-benefits">
+  <!-- LEFT -->
+
+  <section class="register-intro">
+
+        <span class="register-label">
+            JOIN THE COMMUNITY
+        </span>
 
 
-        <div class="benefit">
+    <h1>
 
-          <div class="benefit-icon">
-            🐾
-          </div>
+      Be part of the
+      <span>recovery.</span>
 
-          <div>
+    </h1>
 
-            <strong>
-              Report lost pets
-            </strong>
 
-            <span>
-                            Share missing pet information
-                            with your local community.
-                        </span>
+    <p>
 
-          </div>
+      Create your LostPetFinder account and help
+      connect lost pets with the people looking
+      for them.
 
+    </p>
+
+
+    <div class="benefits">
+
+
+      <div class="benefit">
+
+        <div class="benefit-icon">
+          🐾
         </div>
 
+        <div>
 
-        <div class="benefit">
+          <strong>
+            Report lost pets
+          </strong>
 
-          <div class="benefit-icon">
-            🔎
-          </div>
-
-          <div>
-
-            <strong>
-              Search local reports
-            </strong>
-
-            <span>
-                            Find lost and found animals
-                            in your locality.
-                        </span>
-
-          </div>
+          <p>
+            Share missing pet information
+            with your local community.
+          </p>
 
         </div>
-
-
-        <div class="benefit">
-
-          <div class="benefit-icon">
-            ❤️
-          </div>
-
-          <div>
-
-            <strong>
-              Help reunite pets
-            </strong>
-
-            <span>
-                            Become part of a community
-                            working together.
-                        </span>
-
-          </div>
-
-        </div>
-
 
       </div>
+
+
+      <div class="benefit">
+
+        <div class="benefit-icon">
+          🔎
+        </div>
+
+        <div>
+
+          <strong>
+            Search local reports
+          </strong>
+
+          <p>
+            Find lost and found animals
+            in your locality.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="benefit">
+
+        <div class="benefit-icon">
+          ❤️
+        </div>
+
+        <div>
+
+          <strong>
+            Help reunite pets
+          </strong>
+
+          <p>
+            Become part of a community
+            working together.
+          </p>
+
+        </div>
+
+      </div>
+
 
     </div>
 
-
-    <!-- ================= REGISTER FORM ================= -->
-
-    <div class="register-card">
+  </section>
 
 
-      <div class="register-card-header">
+  <!-- RIGHT -->
 
-        <div class="icon">
-          👤
-        </div>
-
-        <h2>
-          Create your account
-        </h2>
-
-        <p>
-          Enter your details to join LostPetFinder.
-        </p>
-
-      </div>
+  <section class="register-card">
 
 
-      <form id="registerForm"
+    <div class="register-icon">
+      👤
+    </div>
+
+
+    <h2>
+      Create your account
+    </h2>
+
+
+    <p>
+      Enter your details to join LostPetFinder.
+    </p>
+
+
+    <form
+            id="registerForm"
             class="register-form">
 
 
-        <div class="input-group">
+      <div class="register-group">
 
-          <label for="name">
-            FULL NAME
-          </label>
+        <label for="name">
+          Full Name
+        </label>
 
-          <input
-                  id="name"
-                  type="text"
-                  placeholder="Enter your full name"
-                  required
-          >
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label for="email">
-            EMAIL ADDRESS
-          </label>
-
-          <input
-                  id="email"
-                  type="email"
-                  placeholder="example@gmail.com"
-                  required
-          >
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label for="phone">
-            PHONE NUMBER
-          </label>
-
-          <input
-                  id="phone"
-                  type="tel"
-                  placeholder="9876543210"
-                  required
-          >
-
-        </div>
-
-
-        <button
-                type="submit"
-                class="btn-primary">
-
-          Create My Account
-
-        </button>
-
-
-        <div id="registerMessage">
-        </div>
-
-
-      </form>
-
-
-      <div class="register-note">
-
-        Your information is used to create your
-        LostPetFinder community account.
+        <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+        >
 
       </div>
 
-    </div>
+
+      <div class="register-group">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+                type="email"
+                id="email"
+                placeholder="example@gmail.com"
+                required
+        >
+
+      </div>
+
+
+      <div class="register-group">
+
+        <label for="phone">
+          Phone Number
+        </label>
+
+        <input
+                type="tel"
+                id="phone"
+                placeholder="9876543210"
+                required
+        >
+
+      </div>
+
+
+      <button
+              type="submit"
+              class="register-submit">
+
+        Create My Account
+
+      </button>
+
+
+      <div id="registerMessage"></div>
+
+    </form>
 
   </section>
 
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-<footer class="footer">
-
-  <div class="footer-main">
-
-    <a href="/index.html" class="logo">
-
-      <span class="logo-icon">🐾</span>
-
-      <span class="logo-text">
-                <strong>LostPetFinder</strong>
-                <small>Pet Recovery Network</small>
-            </span>
-
-    </a>
+<footer class="register-footer">
 
 
-    <div class="footer-links">
+  <div class="register-footer-brand">
 
-      <a href="/index.html">Home</a>
-      <a href="/search.html">Search</a>
-      <a href="/report.html">Report</a>
-      <a href="/register.html">Register</a>
+    <div class="register-footer-icon">
+      🐾
+    </div>
+
+    <div>
+
+      <strong>
+        LostPetFinder
+      </strong>
+
+      <small>
+        Pet Recovery Network
+      </small>
 
     </div>
 
   </div>
 
 
-  <div class="footer-bottom">
+  <div class="register-footer-links">
 
-        <span>
-            © 2026 LostPetFinder
-        </span>
+    <a href="/index.html">
+      Home
+    </a>
 
-    <span>
-            Spring Boot • JPA • MySQL
-        </span>
+    <a href="/search.html">
+      Search
+    </a>
+
+    <a href="/report.html">
+      Report
+    </a>
+
+    <a href="/register.html">
+      Register
+    </a>
 
   </div>
+
 
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =====================================================
+     REGISTRATION JAVASCRIPT
+===================================================== -->
 
 <script>
 
   document
       .getElementById("registerForm")
-      .addEventListener(
-          "submit",
-          registerUser
-      );
+      .addEventListener("submit", async function(event) {
+
+          event.preventDefault();
 
 
-  async function registerUser(event) {
-
-      event.preventDefault();
-
-
-      const message =
-          document.getElementById("registerMessage");
+          const message =
+              document.getElementById("registerMessage");
 
 
-      const name =
-          document.getElementById("name")
-              .value.trim();
+          message.textContent =
+              "Creating your account...";
 
-      const email =
-          document.getElementById("email")
-              .value.trim();
-
-      const phone =
-          document.getElementById("phone")
-              .value.trim();
+          message.style.color =
+              "#ffb52e";
 
 
-      message.innerHTML = `
-          <span style="color:#ffb84a;">
-              Creating your account...
-          </span>
-      `;
+          const data = {
+
+              name:
+                  document
+                      .getElementById("name")
+                      .value
+                      .trim(),
+
+              email:
+                  document
+                      .getElementById("email")
+                      .value
+                      .trim(),
+
+              phone:
+                  document
+                      .getElementById("phone")
+                      .value
+                      .trim()
+
+          };
 
 
-      try {
+          try {
 
-          const response =
-              await fetch("/api/users", {
+              const response =
+                  await fetch(
+                      "/api/users",
+                      {
+                          method: "POST",
 
-                  method: "POST",
+                          headers: {
+                              "Content-Type":
+                                  "application/json"
+                          },
 
-                  headers: {
-                      "Content-Type": "application/json"
-                  },
-
-                  body: JSON.stringify({
-
-                      name: name,
-
-                      email: email,
-
-                      phone: phone
-
-                  })
-
-              });
+                          body:
+                              JSON.stringify(data)
+                      }
+                  );
 
 
-          if (!response.ok) {
+              if (!response.ok) {
 
-              let errorMessage =
-                  "Registration failed.";
+                  let errorMessage =
+                      "Unable to create account.";
 
-              try {
+                  try {
 
-                  const error =
-                      await response.json();
+                      const error =
+                          await response.json();
 
-                  if (error.message) {
-                      errorMessage = error.message;
-                  }
+                      if (error.message) {
+                          errorMessage =
+                              error.message;
+                      }
 
-              } catch (_) {}
+                  } catch (e) {}
 
-              throw new Error(errorMessage);
+                  throw new Error(errorMessage);
+              }
+
+
+              const user =
+                  await response.json();
+
+
+              message.innerHTML = `
+                  <span style="
+                      color:#55d99a;
+                      font-weight:700;
+                  ">
+                      ✓ Account created successfully!
+                      Your User ID is ${user.id}.
+                  </span>
+              `;
+
+
+              document
+                  .getElementById("registerForm")
+                  .reset();
+
+
+          } catch (error) {
+
+              message.innerHTML = `
+                  <span style="
+                      color:#ff947c;
+                      font-weight:700;
+                  ">
+                      ✕ ${error.message}
+                  </span>
+              `;
+
           }
 
-
-          const user =
-              await response.json();
-
-
-          message.innerHTML = `
-              <span style="color:#55d99a;">
-                  ✓ Account created successfully!
-                  Your User ID is
-                  <strong>${user.id}</strong>.
-              </span>
-          `;
-
-
-          document
-              .getElementById("registerForm")
-              .reset();
-
-
-      } catch (error) {
-
-          console.error(error);
-
-          message.innerHTML = `
-              <span style="color:#ff947c;">
-                  ✕ ${error.message}
-              </span>
-          `;
-
-      }
-
-  }
+      });
 
 </script>
 
 
 </body>
+
 </html>

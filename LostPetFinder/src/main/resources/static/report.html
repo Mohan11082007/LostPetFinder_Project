@@ -8,131 +8,388 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Report a Pet | LostPetFinder</title>
-
-    <link rel="stylesheet" href="/style.css">
+    <title>Report | LostPetFinder</title>
 
     <style>
 
-        /* ================= PAGE ================= */
+        /* =====================================================
+           BASIC
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(255, 169, 54, 0.07),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(72, 94, 145, 0.08),
+                    transparent 30%
+                ),
+                #070b13;
+
+            color: #f4f6fa;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            width: 100%;
+
+            min-height: 82px;
+
+            background: #080d17;
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+
+            min-height: 82px;
+
+            margin: 0 auto;
+
+            padding: 0 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color: #ffffff;
+
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd16a,
+                    #ff9e32
+                );
+
+            font-size: 21px;
+
+            box-shadow:
+                0 10px 28px
+                rgba(255, 166, 55, 0.18);
+        }
+
+        .brand strong {
+            display: block;
+
+            color: #f5f7fb;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+        .brand span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #78869b;
+
+            font-size: 9px;
+
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 34px;
+        }
+
+        .nav-links a {
+            color: #9da9bb;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            padding: 30px 0 25px;
+
+            border-bottom:
+                2px solid transparent;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a.active {
+            color: #ffb52e;
+
+            border-bottom-color:
+                #ffb52e;
+        }
+
+        .nav-links .nav-register {
+            padding: 12px 22px;
+
+            color: #11151d;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd16a,
+                    #ffb43d
+                );
+
+            border-radius: 12px;
+
+            border: none;
+        }
+
+        .nav-links .nav-register:hover {
+            color: #11151d;
+
+            background: #ffd16a;
+        }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
 
         .report-page {
-            padding: 75px 0 90px;
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                75px 25px 90px;
         }
 
         .report-header {
             text-align: center;
+
             margin-bottom: 45px;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: #ffb52e;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
         }
 
         .report-header h1 {
             margin-top: 12px;
-            font-family: Manrope, sans-serif;
-            font-size: clamp(40px, 5vw, 58px);
+
+            font-size:
+                clamp(40px, 5vw, 58px);
+
+            line-height: 1.05;
         }
 
         .report-header h1 span {
-            color: var(--orange);
+            color: #ffb52e;
         }
 
         .report-header p {
-            max-width: 600px;
+            max-width: 650px;
+
             margin: 15px auto 0;
-            color: var(--muted);
-            font-size: 13px;
+
+            color: #9ca9bd;
+
+            font-size: 14px;
+
             line-height: 1.8;
         }
 
 
-        /* ================= REPORT CHOICES ================= */
+        /* =====================================================
+           LOST / FOUND CHOICE CARDS
+        ===================================================== */
 
         .report-choice-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 20px;
+
             margin-bottom: 35px;
         }
 
         .report-choice {
             padding: 30px;
+
             border-radius: 23px;
-            border: 1px solid var(--border);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.09);
+
             background:
                 linear-gradient(
                     145deg,
-                    rgba(20,30,48,.9),
-                    rgba(11,17,29,.9)
+                    rgba(20, 30, 48, 0.95),
+                    rgba(11, 17, 29, 0.95)
                 );
-            transition: .3s ease;
+
             cursor: pointer;
+
+            transition: 0.3s ease;
         }
 
         .report-choice:hover {
             transform: translateY(-5px);
-            border-color: rgba(255,184,74,.35);
+
+            border-color:
+                rgba(255, 184, 74, 0.35);
         }
 
         .choice-icon {
             width: 58px;
             height: 58px;
-            display: grid;
-            place-items: center;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
             border-radius: 16px;
+
+            background:
+                rgba(255, 184, 74, 0.09);
+
             font-size: 28px;
-            background: rgba(255,184,74,.09);
         }
 
         .choice-label {
             display: block;
+
             margin-top: 22px;
-            color: var(--orange);
+
+            color: #ffb52e;
+
             font-size: 9px;
+
             font-weight: 800;
+
             letter-spacing: 1.7px;
         }
 
         .report-choice h2 {
             margin-top: 8px;
-            font-family: Manrope, sans-serif;
+
             font-size: 23px;
         }
 
         .report-choice p {
             margin-top: 9px;
-            color: var(--muted);
+
+            color: #8d9ab0;
+
             font-size: 11px;
+
             line-height: 1.7;
         }
 
         .choice-action {
             display: inline-block;
+
             margin-top: 20px;
-            color: white;
+
+            color: #ffffff;
+
             font-size: 11px;
+
             font-weight: 700;
         }
 
 
-        /* ================= FORM ================= */
+        /* =====================================================
+           FORM CARD
+        ===================================================== */
 
         .report-form-panel {
             display: none;
 
             padding: 32px;
 
+            margin-bottom: 25px;
+
             border-radius: 24px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.09);
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(18,27,43,.95),
-                    rgba(10,16,27,.95)
+                    rgba(18, 27, 43, 0.98),
+                    rgba(10, 16, 27, 0.98)
                 );
 
             box-shadow:
-                0 25px 70px rgba(0,0,0,.25);
+                0 25px 70px
+                rgba(0, 0, 0, 0.25);
         }
 
         .report-form-panel.show {
@@ -141,8 +398,11 @@
 
         .form-title {
             display: flex;
+
             align-items: center;
+
             gap: 16px;
+
             margin-bottom: 28px;
         }
 
@@ -150,119 +410,331 @@
             width: 55px;
             height: 55px;
 
-            display: grid;
-            place-items: center;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
 
             border-radius: 15px;
 
-            background: rgba(255,184,74,.10);
+            background:
+                rgba(255, 184, 74, 0.10);
 
             font-size: 27px;
         }
 
         .form-title h2 {
-            font-family: Manrope, sans-serif;
             font-size: 25px;
         }
 
         .form-title p {
             margin-top: 4px;
-            color: var(--muted);
+
+            color: #8d9ab0;
+
             font-size: 11px;
         }
 
+
+        /* =====================================================
+           FORM LAYOUT
+        ===================================================== */
+
         .report-form {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 18px;
         }
 
-        .report-form .full {
+        .input-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .input-group.full {
             grid-column: 1 / -1;
         }
 
+        .input-group label {
+            color: #e9edf5;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           IMPORTANT - PROFESSIONAL INPUT BOXES
+        ===================================================== */
+
+        .report-form input {
+            width: 100% !important;
+
+            height: 50px !important;
+
+            padding:
+                0 15px !important;
+
+            background-color:
+                #151f30 !important;
+
+            background:
+                #151f30 !important;
+
+            color:
+                #f4f6fa !important;
+
+            border:
+                1px solid #2d3a4e !important;
+
+            border-radius:
+                12px !important;
+
+            outline:
+                none !important;
+
+            box-shadow:
+                none !important;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif !important;
+
+            font-size:
+                14px !important;
+
+            appearance:
+                none !important;
+
+            -webkit-appearance:
+                none !important;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .report-form input::placeholder {
+            color:
+                #718097 !important;
+
+            opacity:
+                1 !important;
+        }
+
+        .report-form input:focus {
+            background-color:
+                #182437 !important;
+
+            background:
+                #182437 !important;
+
+            color:
+                #ffffff !important;
+
+            border-color:
+                #ffb52e !important;
+
+            outline:
+                none !important;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255, 181, 46, 0.12) !important;
+        }
+
+
+        /* =====================================================
+           TEXTAREA
+        ===================================================== */
+
         .report-form textarea {
-            width: 100%;
-            min-height: 100px;
+            width: 100% !important;
+
+            min-height: 105px !important;
+
+            padding:
+                14px 15px !important;
+
+            background-color:
+                #151f30 !important;
+
+            background:
+                #151f30 !important;
+
+            color:
+                #f4f6fa !important;
+
+            border:
+                1px solid #2d3a4e !important;
+
+            border-radius:
+                12px !important;
+
+            outline:
+                none !important;
 
             resize: vertical;
 
-            padding: 13px 14px;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-            border: 1px solid var(--border);
-            border-radius: 11px;
+            font-size: 14px;
 
-            background: rgba(255,255,255,.035);
-
-            color: white;
-
-            font: inherit;
-
-            outline: none;
-        }
-
-        .report-form textarea:focus {
-            border-color: var(--orange);
+            transition: 0.2s ease;
         }
 
         .report-form textarea::placeholder {
-            color: #68758a;
+            color:
+                #718097 !important;
+
+            opacity: 1;
         }
+
+        .report-form textarea:focus {
+            background:
+                #182437 !important;
+
+            color:
+                #ffffff !important;
+
+            border-color:
+                #ffb52e !important;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255, 181, 46, 0.12) !important;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
 
         .form-actions {
             grid-column: 1 / -1;
 
             display: flex;
+
             align-items: center;
+
             gap: 12px;
 
             margin-top: 5px;
         }
 
-        .cancel-btn {
-            border: 1px solid var(--border);
+        .btn-primary {
+            border: none;
 
-            background: rgba(255,255,255,.03);
+            padding:
+                14px 23px;
 
-            color: #aab5c7;
+            border-radius: 12px;
 
-            padding: 13px 18px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd16a,
+                    #ffb43d
+                );
 
-            border-radius: 11px;
+            color:
+                #11151d;
+
+            font-weight: 800;
 
             cursor: pointer;
 
-            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(255, 181, 46, 0.20);
+        }
+
+        .cancel-btn {
+            border:
+                1px solid #2d3a4e;
+
+            background:
+                rgba(255, 255, 255, 0.03);
+
+            color:
+                #aab5c7;
+
+            padding:
+                13px 20px;
+
+            border-radius:
+                11px;
+
+            cursor:
+                pointer;
+
+            font-weight:
+                700;
         }
 
         .cancel-btn:hover {
-            color: white;
-            border-color: rgba(255,255,255,.2);
+            color:
+                #ffffff;
+
+            border-color:
+                rgba(255, 255, 255, 0.2);
         }
 
         .form-message {
-            grid-column: 1 / -1;
+            grid-column:
+                1 / -1;
 
             min-height: 20px;
 
-            font-size: 11px;
+            font-size: 12px;
         }
 
 
-        /* ================= INFO ================= */
+        /* =====================================================
+           INFORMATION CARDS
+        ===================================================== */
 
         .report-info {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 15px;
+
             margin-top: 25px;
         }
 
         .info-card {
             padding: 20px;
+
             border-radius: 17px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,.018);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            background:
+                rgba(255, 255, 255, 0.018);
         }
 
         .info-card span {
@@ -271,22 +743,110 @@
 
         .info-card h3 {
             margin-top: 10px;
-            font-family: Manrope, sans-serif;
+
             font-size: 14px;
         }
 
         .info-card p {
             margin-top: 6px;
-            color: var(--muted);
+
+            color: #8d9ab0;
+
             font-size: 10px;
+
             line-height: 1.6;
         }
 
 
-        @media (max-width: 700px) {
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
-            .report-page {
-                padding-top: 50px;
+        .footer {
+            min-height: 105px;
+
+            padding: 28px 6%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                #060a12;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .footer-brand strong {
+            display: block;
+
+            color: #f4f6fa;
+        }
+
+        .footer-brand span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #718097;
+
+            font-size: 9px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 28px;
+        }
+
+        .footer-links a {
+            color: #7f8da3;
+
+            text-decoration: none;
+
+            font-size: 11px;
+        }
+
+        .footer-links a:hover {
+            color: #ffb52e;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 760px) {
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+
+                padding:
+                    27px 0 22px;
+            }
+
+            .brand span {
+                display: none;
             }
 
             .report-choice-grid,
@@ -295,7 +855,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .report-form .full,
+            .input-group.full,
             .form-actions,
             .form-message {
                 grid-column: auto;
@@ -303,11 +863,20 @@
 
             .form-actions {
                 flex-direction: column;
+
                 align-items: stretch;
             }
 
             .form-actions button {
                 width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 20px;
             }
         }
 
@@ -319,60 +888,79 @@
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <header class="navbar">
 
-    <a href="/index.html" class="logo">
+    <div class="nav-container">
 
-        <span class="logo-icon">🐾</span>
+        <a href="/index.html"
+           class="brand">
 
-        <span class="logo-text">
-            <strong>LostPetFinder</strong>
-            <small>Pet Recovery Network</small>
-        </span>
+            <div class="brand-icon">
+                🐾
+            </div>
 
-    </a>
+            <div>
 
+                <strong>
+                    LostPetFinder
+                </strong>
 
-    <nav class="navigation">
+                <span>
+                    Pet Recovery Network
+                </span>
 
-        <a href="/index.html" class="nav-link">
-            Home
+            </div>
+
         </a>
 
-        <a href="/search.html" class="nav-link">
-            Search
-        </a>
 
-        <a href="/report.html" class="nav-link active">
-            Report
-        </a>
+        <nav class="nav-links">
 
-        <a href="/register.html"
-           class="nav-link register-link">
-            Register
-        </a>
+            <a href="/index.html">
+                Home
+            </a>
 
-    </nav>
+            <a href="/search.html">
+                Search
+            </a>
+
+            <a href="/report.html"
+               class="active">
+                Report
+            </a>
+
+            <a href="/register.html"
+               class="nav-register">
+                Register
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
 
-<!-- ================= MAIN ================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main>
 
     <section class="report-page">
 
 
-        <!-- HEADER -->
+        <!-- PAGE HEADER -->
 
         <div class="report-header">
 
-            <span class="section-label">
-                HELP A PET
-            </span>
+        <span class="section-label">
+            HELP A PET
+        </span>
 
             <h1>
                 What would you like to
@@ -388,7 +976,9 @@
         </div>
 
 
-        <!-- ================= CHOICES ================= -->
+        <!-- =================================================
+             CHOICE CARDS
+        ================================================= -->
 
         <div class="report-choice-grid">
 
@@ -403,8 +993,8 @@
                 </div>
 
                 <span class="choice-label">
-                    LOST PET
-                </span>
+                LOST PET
+            </span>
 
                 <h2>
                     My pet is missing
@@ -416,8 +1006,8 @@
                 </p>
 
                 <span class="choice-action">
-                    Report Lost Pet →
-                </span>
+                Report Lost Pet →
+            </span>
 
             </div>
 
@@ -432,8 +1022,8 @@
                 </div>
 
                 <span class="choice-label">
-                    FOUND ANIMAL
-                </span>
+                FOUND ANIMAL
+            </span>
 
                 <h2>
                     I found an animal
@@ -445,15 +1035,17 @@
                 </p>
 
                 <span class="choice-action">
-                    Report Found Animal →
-                </span>
+                Report Found Animal →
+            </span>
 
             </div>
 
         </div>
 
 
-        <!-- ================= LOST FORM ================= -->
+        <!-- =================================================
+             LOST PET FORM
+        ================================================= -->
 
         <section id="lostFormPanel"
                  class="report-form-panel">
@@ -491,8 +1083,8 @@
                     </label>
 
                     <input
-                            id="lostSpecies"
                             type="text"
+                            id="lostSpecies"
                             placeholder="Dog / Cat"
                             required
                     >
@@ -507,8 +1099,8 @@
                     </label>
 
                     <input
-                            id="lostBreed"
                             type="text"
+                            id="lostBreed"
                             placeholder="Example: Labrador"
                     >
 
@@ -522,8 +1114,8 @@
                     </label>
 
                     <input
-                            id="lostColor"
                             type="text"
+                            id="lostColor"
                             placeholder="Example: Brown"
                             required
                     >
@@ -538,8 +1130,8 @@
                     </label>
 
                     <input
-                            id="lostLocation"
                             type="text"
+                            id="lostLocation"
                             placeholder="Example: Kinathukadavu"
                             required
                     >
@@ -554,8 +1146,8 @@
                     </label>
 
                     <input
-                            id="lostUserId"
                             type="number"
+                            id="lostUserId"
                             min="1"
                             placeholder="Example: 1"
                             required
@@ -595,7 +1187,9 @@
         </section>
 
 
-        <!-- ================= FOUND FORM ================= -->
+        <!-- =================================================
+             FOUND ANIMAL FORM
+        ================================================= -->
 
         <section id="foundFormPanel"
                  class="report-form-panel">
@@ -633,8 +1227,8 @@
                     </label>
 
                     <input
-                            id="foundSpecies"
                             type="text"
+                            id="foundSpecies"
                             placeholder="Dog / Cat"
                             required
                     >
@@ -649,8 +1243,8 @@
                     </label>
 
                     <input
-                            id="foundBreed"
                             type="text"
+                            id="foundBreed"
                             placeholder="Example: Labrador"
                     >
 
@@ -664,8 +1258,8 @@
                     </label>
 
                     <input
-                            id="foundColor"
                             type="text"
+                            id="foundColor"
                             placeholder="Example: White"
                             required
                     >
@@ -680,8 +1274,8 @@
                     </label>
 
                     <input
-                            id="foundLocation"
                             type="text"
+                            id="foundLocation"
                             placeholder="Example: Coimbatore"
                             required
                     >
@@ -696,8 +1290,8 @@
                     </label>
 
                     <input
-                            id="foundUserId"
                             type="number"
+                            id="foundUserId"
                             min="1"
                             placeholder="Example: 1"
                             required
@@ -751,14 +1345,18 @@
         </section>
 
 
-        <!-- ================= INFORMATION ================= -->
+        <!-- =================================================
+             INFORMATION CARDS
+        ================================================= -->
 
         <div class="report-info">
 
 
             <div class="info-card">
 
-                <span>📍</span>
+            <span>
+                📍
+            </span>
 
                 <h3>
                     Give the location
@@ -774,7 +1372,9 @@
 
             <div class="info-card">
 
-                <span>🐾</span>
+            <span>
+                🐾
+            </span>
 
                 <h3>
                     Describe accurately
@@ -790,7 +1390,9 @@
 
             <div class="info-card">
 
-                <span>❤️</span>
+            <span>
+                ❤️
+            </span>
 
                 <h3>
                     Help reunite
@@ -803,6 +1405,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -811,54 +1414,66 @@
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer class="footer">
 
-    <div class="footer-main">
+    <div class="footer-brand">
 
-        <a href="/index.html" class="logo">
+        <div class="brand-icon">
+            🐾
+        </div>
 
-            <span class="logo-icon">🐾</span>
+        <div>
 
-            <span class="logo-text">
-                <strong>LostPetFinder</strong>
-                <small>Pet Recovery Network</small>
+            <strong>
+                LostPetFinder
+            </strong>
+
+            <span>
+                Pet Recovery Network
             </span>
-
-        </a>
-
-
-        <div class="footer-links">
-
-            <a href="/index.html">Home</a>
-            <a href="/search.html">Search</a>
-            <a href="/report.html">Report</a>
-            <a href="/register.html">Register</a>
 
         </div>
 
     </div>
 
 
-    <div class="footer-bottom">
+    <div class="footer-links">
 
-        <span>
-            © 2026 LostPetFinder
-        </span>
+        <a href="/index.html">
+            Home
+        </a>
 
-        <span>
-            Spring Boot • JPA • MySQL
-        </span>
+        <a href="/search.html">
+            Search
+        </a>
+
+        <a href="/report.html">
+            Report
+        </a>
+
+        <a href="/register.html">
+            Register
+        </a>
 
     </div>
 
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
+
+
+    /* =====================================================
+       SHOW LOST FORM
+    ===================================================== */
 
     function showLostForm() {
 
@@ -879,6 +1494,10 @@
     }
 
 
+    /* =====================================================
+       SHOW FOUND FORM
+    ===================================================== */
+
     function showFoundForm() {
 
         document
@@ -898,6 +1517,10 @@
     }
 
 
+    /* =====================================================
+       HIDE FORMS
+    ===================================================== */
+
     function hideForms() {
 
         document
@@ -907,239 +1530,270 @@
         document
             .getElementById("foundFormPanel")
             .classList.remove("show");
-
     }
 
 
-    async function submitLostPet(event) {
-
-        event.preventDefault();
-
-        const message =
-            document.getElementById("lostMessage");
-
-        message.textContent =
-            "Submitting report...";
-
-
-        const data = {
-
-            species:
-                document.getElementById("lostSpecies")
-                    .value.trim(),
-
-            breed:
-                document.getElementById("lostBreed")
-                    .value.trim(),
-
-            color:
-                document.getElementById("lostColor")
-                    .value.trim(),
-
-            lastSeenLocation:
-                document.getElementById("lostLocation")
-                    .value.trim(),
-
-            userId:
-                Number(
-                    document.getElementById("lostUserId")
-                        .value
-                )
-
-        };
-
-
-        try {
-
-            const response =
-                await fetch("/api/lost-pets", {
-
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify(data)
-
-                });
-
-
-            if (!response.ok) {
-
-                let errorText =
-                    "Unable to submit report.";
-
-                try {
-
-                    const error =
-                        await response.json();
-
-                    if (error.message) {
-                        errorText = error.message;
-                    }
-
-                } catch (_) {}
-
-                throw new Error(errorText);
-            }
-
-
-            const report =
-                await response.json();
-
-
-            message.innerHTML = `
-                <span style="color:#55d99a;">
-                    ✓ Lost pet report created successfully.
-                    Report ID: ${report.id}
-                </span>
-            `;
-
-
-            document
-                .getElementById("lostPetForm")
-                .reset();
-
-
-        } catch (error) {
-
-            message.innerHTML = `
-                <span style="color:#ff947c;">
-                    ✕ ${error.message}
-                </span>
-            `;
-
-        }
-
-    }
-
-
-    async function submitFoundAnimal(event) {
-
-        event.preventDefault();
-
-        const message =
-            document.getElementById("foundMessage");
-
-        message.textContent =
-            "Submitting report...";
-
-
-        const data = {
-
-            species:
-                document.getElementById("foundSpecies")
-                    .value.trim(),
-
-            breed:
-                document.getElementById("foundBreed")
-                    .value.trim(),
-
-            color:
-                document.getElementById("foundColor")
-                    .value.trim(),
-
-            foundLocation:
-                document.getElementById("foundLocation")
-                    .value.trim(),
-
-            userId:
-                Number(
-                    document.getElementById("foundUserId")
-                        .value
-                ),
-
-            description:
-                document.getElementById("foundDescription")
-                    .value.trim()
-
-        };
-
-
-        try {
-
-            const response =
-                await fetch("/api/found-animals", {
-
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify(data)
-
-                });
-
-
-            if (!response.ok) {
-
-                let errorText =
-                    "Unable to submit report.";
-
-                try {
-
-                    const error =
-                        await response.json();
-
-                    if (error.message) {
-                        errorText = error.message;
-                    }
-
-                } catch (_) {}
-
-                throw new Error(errorText);
-            }
-
-
-            const report =
-                await response.json();
-
-
-            message.innerHTML = `
-                <span style="color:#55d99a;">
-                    ✓ Found animal report created successfully.
-                    Report ID: ${report.id}
-                </span>
-            `;
-
-
-            document
-                .getElementById("foundAnimalForm")
-                .reset();
-
-
-        } catch (error) {
-
-            message.innerHTML = `
-                <span style="color:#ff947c;">
-                    ✕ ${error.message}
-                </span>
-            `;
-
-        }
-
-    }
-
+    /* =====================================================
+       LOST PET SUBMIT
+    ===================================================== */
 
     document
         .getElementById("lostPetForm")
-        .addEventListener(
-            "submit",
-            submitLostPet
-        );
+        .addEventListener("submit", async function(event) {
 
+            event.preventDefault();
+
+            const message =
+                document.getElementById("lostMessage");
+
+            message.textContent =
+                "Submitting report...";
+
+            const data = {
+
+                species:
+                    document
+                        .getElementById("lostSpecies")
+                        .value
+                        .trim(),
+
+                breed:
+                    document
+                        .getElementById("lostBreed")
+                        .value
+                        .trim(),
+
+                color:
+                    document
+                        .getElementById("lostColor")
+                        .value
+                        .trim(),
+
+                lastSeenLocation:
+                    document
+                        .getElementById("lostLocation")
+                        .value
+                        .trim(),
+
+                userId:
+                    Number(
+                        document
+                            .getElementById("lostUserId")
+                            .value
+                    )
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/lost-pets",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(data)
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    let errorMessage =
+                        "Unable to submit report.";
+
+                    try {
+
+                        const error =
+                            await response.json();
+
+                        if (error.message) {
+                            errorMessage =
+                                error.message;
+                        }
+
+                    } catch (e) {}
+
+                    throw new Error(errorMessage);
+                }
+
+
+                const report =
+                    await response.json();
+
+
+                message.innerHTML = `
+                    <span style="
+                        color:#55d99a;
+                        font-weight:700;
+                    ">
+                        ✓ Lost pet report created successfully.
+                        Report ID: ${report.id}
+                    </span>
+                `;
+
+
+                document
+                    .getElementById("lostPetForm")
+                    .reset();
+
+
+            } catch (error) {
+
+                message.innerHTML = `
+                    <span style="
+                        color:#ff947c;
+                        font-weight:700;
+                    ">
+                        ✕ ${error.message}
+                    </span>
+                `;
+            }
+
+        });
+
+
+    /* =====================================================
+       FOUND ANIMAL SUBMIT
+    ===================================================== */
 
     document
         .getElementById("foundAnimalForm")
-        .addEventListener(
-            "submit",
-            submitFoundAnimal
-        );
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const message =
+                document.getElementById("foundMessage");
+
+            message.textContent =
+                "Submitting report...";
+
+
+            const data = {
+
+                species:
+                    document
+                        .getElementById("foundSpecies")
+                        .value
+                        .trim(),
+
+                breed:
+                    document
+                        .getElementById("foundBreed")
+                        .value
+                        .trim(),
+
+                color:
+                    document
+                        .getElementById("foundColor")
+                        .value
+                        .trim(),
+
+                foundLocation:
+                    document
+                        .getElementById("foundLocation")
+                        .value
+                        .trim(),
+
+                userId:
+                    Number(
+                        document
+                            .getElementById("foundUserId")
+                            .value
+                    ),
+
+                description:
+                    document
+                        .getElementById("foundDescription")
+                        .value
+                        .trim()
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/found-animals",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(data)
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    let errorMessage =
+                        "Unable to submit report.";
+
+                    try {
+
+                        const error =
+                            await response.json();
+
+                        if (error.message) {
+                            errorMessage =
+                                error.message;
+                        }
+
+                    } catch (e) {}
+
+                    throw new Error(errorMessage);
+                }
+
+
+                const report =
+                    await response.json();
+
+
+                message.innerHTML = `
+                    <span style="
+                        color:#55d99a;
+                        font-weight:700;
+                    ">
+                        ✓ Found animal report created successfully.
+                        Report ID: ${report.id}
+                    </span>
+                `;
+
+
+                document
+                    .getElementById("foundAnimalForm")
+                    .reset();
+
+
+            } catch (error) {
+
+                message.innerHTML = `
+                    <span style="
+                        color:#ff947c;
+                        font-weight:700;
+                    ">
+                        ✕ ${error.message}
+                    </span>
+                `;
+            }
+
+        });
 
 </script>
 
 
 </body>
+
 </html>
